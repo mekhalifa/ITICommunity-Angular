@@ -46,4 +46,4 @@ testem.log
 Thumbs.db
 
 # custom folder 
-/src/assets/html/*
+/src/assets/html
