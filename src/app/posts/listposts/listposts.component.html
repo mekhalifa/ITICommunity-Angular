@@ -1,0 +1,76 @@
+
+<br>
+<!-- post status start -->
+<div class="card" *ngFor="let item of posts">
+  <!-- post title start -->
+  <div class="post-title d-flex align-items-center">
+    <!-- profile picture end -->
+    <div class="profile-thumb">
+      <a [routerLink]="['/profilee']" [queryParams]="{id: item.postedBy}">
+        <figure class="profile-thumb-middle">
+          <img [src]="'https://localhost:44363'+item.postedByAvatar" alt="profile picture">
+        </figure>
+      </a>
+    </div>
+    <!-- profile picture end -->
+
+    <div class="posted-author">
+      <h6 class="author"><a
+         
+          [routerLink]="['/profilee']" [queryParams]="{id: item.postedBy}">{{item.postedByName}}</a></h6>
+      <span class="post-time">{{getTimeOfPost(item.postedDate)}}</span>
+    </div>
+
+   
+      <ng-container *ngIf="(item.postedBy==userId); then loggedIn; else loggedOut">
+      </ng-container>
+
+      <ng-template #loggedIn>
+        <div class="post-settings-bar">
+          <span></span>
+          <span></span>
+          <span></span>
+          <div class="post-settings arrow-shape">
+         <ul>
+           <li><button>edit post</button></li>
+           <li><button (click)="deletePost(item.postId) "> Delete post</button></li>
+         </ul>
+             </div>
+             </div>
+      </ng-template>
+      <ng-template #loggedOut>
+       
+      </ng-template>
+
+  </div>
+  <!-- post title start -->
+  <div class="post-content">
+    <p class="post-desc">
+{{item.postbody}}
+    </p>
+    <div class="post-thumb-gallery" *ngIf="item.postPhoto">
+      <figure class="post-thumb img-popup">
+        <a >
+          <img [src]="'https://localhost:44363'+item.postPhoto" alt="post image">
+        </a>
+      </figure>
+    </div>
+    <div class="post-meta">
+      <button class="post-meta-like" (click)="onClickLike(item.postId)">
+        <i class="bi bi-heart-beat"></i>
+        <!-- <span>You and 201 people like this</span> -->
+        <strong>{{LikeN}}</strong>
+      </button>
+      <ul class="comment-share-meta">
+        <li>
+          <button class="post-comment">
+            <i class="bi bi-chat-bubble"></i>
+            <!-- <span>41</span> -->
+          </button>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- post status end -->

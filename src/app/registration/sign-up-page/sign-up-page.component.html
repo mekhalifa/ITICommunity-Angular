@@ -1,0 +1,227 @@
+
+
+
+
+
+
+
+
+
+
+<form  noValidate name ="signUpForm"  [formGroup]="signUpForm" (ngSubmit)="onSubmit()" class="signup-inner--form">
+
+    <div class="row">
+
+        <div class="col-12">
+
+            <input 
+            type="text" 
+            class="single-field" 
+            
+            placeholder="Full Name"
+             formControlName ="name"
+             
+            >
+            <small  *ngIf="signUpForm.get('name').hasError('required') && signUpForm.get('name').touched " id="passwordHelp" class="text-danger">
+                Name is required
+              </small> 
+
+        </div>
+
+           
+
+        
+
+        <div class="col-12">
+            <input
+             type="email" 
+             class="single-field"
+             placeholder ="Email"
+             formControlName ="emailAddress"
+              >
+              
+                <small *ngIf="signUpForm.get('emailAddress').hasError('required') && signUpForm.get('emailAddress').touched" class="text-danger">
+                    Email is required
+                  </small>
+              <small  *ngIf="signUpForm.get('emailAddress').hasError('pattern') && signUpForm.get('emailAddress').touched "  class="text-danger">
+                  Please Enter Valid Email Address
+             </small> 
+
+             <div *ngIf="isError == true">
+               <small class="text-danger">
+                 {{errorMsg}}
+               </small>
+               </div>
+        </div>
+       
+        <div class="col-12">
+            <input 
+            type="text" 
+            class="single-field" 
+            placeholder="User Name "
+             formControlName="userName"
+
+            >
+            <div *ngIf=" signUpForm.get('userName').touched && signUpForm.get('userName').hasError('required')" >
+                <small  class="text-danger">
+                    Please Enter User Name
+                </small>
+            </div>
+
+            <!-- <div *ngIf="isError == true">
+              <small class="text-light">
+                {{errorMsg[0]['description']}}
+              </small>
+            </div> -->
+           
+        </div>
+       
+         <div class="col-12">
+
+            <input 
+            type="password"
+             class="single-field"
+             placeholder="Password"
+             formControlName ="password"
+              >
+
+              <small  *ngIf="signUpForm.get('password').hasError('required') && signUpForm.get('password').touched "  class="text-danger">
+                Password is required
+              </small> 
+
+              <small  *ngIf=" signUpForm.get('password').touched && signUpForm.get('password').hasError('minlength') "  class="text-danger">
+                Required Password is at least  8 characters
+                </small> 
+        </div> 
+        
+
+
+        <!-- <div class="col-12">
+
+            <input 
+            type="password"
+             class="single-field"
+             required
+              placeholder="Confirm Password"
+               name = "confirmPassword"
+               formControlName="confirmPassword"
+               >
+
+               <small  *ngIf="signUpForm.get('confirmPassword').hasError('passwordConfirming') && signUpForm.get('confirmPassword').touched" class="text-danger">
+                password does not match  
+                </small> 
+
+                <small class ="text-danger" *ngIf="signUpForm.get('confirmPassword').hasError('required') && signUpForm.get('confirmPassword').touched">
+                    Please Confirm Your Password
+                </small>
+
+
+        </div> -->
+       
+
+
+        <div class="col-12">
+
+            <input 
+            type="text" 
+            class="single-field" 
+            placeholder="National Id"
+             name = "NationalId"
+             formControlName="nationalId"
+             
+            >
+
+            <div *ngIf=" signUpForm.get('nationalId').touched && signUpForm.get('nationalId').hasError('minlength')" >
+                <small  class="text-danger">
+                    Please Enter Valid Id Number 14 digits.
+                </small>
+            </div>
+            <div *ngIf=" signUpForm.get('nationalId').touched && signUpForm.get('nationalId').hasError('required')" >
+                <small  class="text-danger">
+                    Please Enter Id Number
+                </small>
+            </div>
+            
+        </div>
+
+      
+
+         <div class="col-md-6">
+
+            <select 
+            formControlName="intakeId"
+             class="nice-select" name="sortby"
+              >
+              <option value="">Choose your Intake</option>
+              <option name="IntakeId"*ngFor = "let intake  of Intakes; index as i " [value]="intake[i].id" value="trending">Intake {{intake[i].intake1}}</option>
+            </select>
+            
+            <div *ngIf=" signUpForm.get('intakeId').touched && signUpForm.get('intakeId').hasError('required')" >
+                <small  class="text-danger">
+                    Choose Your Intake
+                </small>
+            </div>
+           
+               
+        </div> 
+
+
+        <div class="col-md-6" >
+            <select
+            formControlName="branchId"
+             name="branchSelect" class="nice-select"
+             
+              >
+
+                <option value=""> ITI Institute Location</option>
+                <option name="BranchId"*ngFor = "let branch  of Branchs ; index as i  " [value]="branch[i].id" value="trending"> {{branch[i].branchLocation}} </option>
+                
+            </select>
+            <div *ngIf=" signUpForm.get('branchId').touched && signUpForm.get('branchId').hasError('required')" >
+                <small  class="text-danger">
+                    Choose Your Branch
+                </small>
+            </div>
+        </div> 
+
+
+          <div class="col-md-6" >
+            <select
+            formControlName="trackId"
+             name="trackSelect" class="nice-select"
+              >
+
+                <option value="">Choose your Track</option>
+                <option name="TrackId"*ngFor = "let track  of Tracks ; index as i " [value]="track[i].id" value="trending"> {{track[i].track1}} track</option>
+                
+            </select>
+            <div *ngIf=" signUpForm.get('trackId').touched && signUpForm.get('trackId').hasError('required')" >
+                <small  class="text-danger">
+                    Choose Your Track
+                </small>
+            </div>
+        </div> 
+       
+ 
+
+         <!-- <div class="col-md-6" >
+
+            <input formControlName ="age"
+             name="age" placeholder="Date of Birth" 
+             class="nice-select" type="text" 
+             ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()"/>
+           
+            <small class="taxt-danger" *ngIf="signUpForm.get('age').hasError('required') && signUpForm.get('age').touched ">
+                Enter Your Date of Birth
+            </small>  
+        </div>  -->
+        
+        
+        <div class="col-12">
+            <button class="submit-btn">Create Account</button>
+            <!-- [disabled]="!signUpForm.valid -->
+        </div>
+    </div>
+
+    <h6 class="terms-condition">I have read & accepted the <a href="#">terms of use</a></h6>
+</form>

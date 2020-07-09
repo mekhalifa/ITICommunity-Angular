@@ -2403,7 +2403,8 @@ textarea:focus {
   position: absolute;
   height: 170px;
   width: 174px;
-  background-image: url("../images/icons/login.png");
+  background-image: url("../images/ITI Community.png");
+  opacity: 50%;
   background-repeat: no-repeat;
   -webkit-transform: translate(-50%, -80%);
       -ms-transform: translate(-50%, -80%);

@@ -1,0 +1,65 @@
+<!-- header area start -->
+<app-header></app-header>
+<!-- header area end -->
+<!-- about author details start -->
+<div class="about-author-details" style="margin-top: 80px;">
+    <a [routerLink]="['/aboutedit']"  ></a>
+    <div class="container" >
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="card widget-item">
+                    <div class="about-me">
+                        <ul class="nav flex-column about-author-menu">
+                            <li><a href="#one" data-toggle="tab" class="active" (click)='getStory()'>ITI story</a></li>
+                            <li><a href="#two" data-toggle="tab" (click)="['/about/edit/work']">Working Zone</a></li>
+                            <li><a href="#three" data-toggle="tab" (click)="['/about/edit/work']">Educational Qualification</a></li>
+                            <li><a href="#four" data-toggle="tab" (click)="['/about/edit/work']">Contact Details</a></li> 
+                            <!-- <li><a href="#five" data-toggle="tab">Friends </a></li> -->
+                            <!-- <li><a href="#six" data-toggle="tab">Work & Education</a></li> -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="about-description">
+                    <div class="tab-content">
+                        <!-- story -->
+                        <form [formGroup]="postForm" (ngSubmit)="PostStory()">
+                        <div class="tab-pane fade active show" id="one"  >
+                           
+                            <div  class="work-zone" id="itistory">
+                                <!-- *ngFor="let item of storyarea" -->
+                                <div class="author-desc-title d-flex">
+                                    <h6 class="author"><a href="profile.html">ITI Story</a></h6>
+                                    <div class="post-settings-bar">
+                                        <span></span>
+                                        <span></span>
+                                        <!-- <span></span> -->
+                                       
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <textarea name="storytxtarea" rows="7" class="form-control" formControlName="story">{{storyarea}}</textarea>
+
+                                </div>
+                                <div class="modal-footer">
+                                    
+                                    <button  (click)="PostStory()" type="submit" id="poststory" class="post-share-btn" >Save Changes</button>
+                                  </div>
+                            
+                               
+                            </div>
+                        
+                        </div>
+                         </form>
+                     <!-- story end -->
+
+                         
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- about author details start -->

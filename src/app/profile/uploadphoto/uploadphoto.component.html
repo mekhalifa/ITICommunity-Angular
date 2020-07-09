@@ -1,0 +1,48 @@
+              <div class="profile-edit-panel">
+                <button  class="edit-btn" data-toggle="modal" data-target="#box">edit profile</button>
+
+              </div>
+<!-- Modal -->
+<div class="modal fade" id="box" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+
+    <form [formGroup]="photoForm" (ngSubmit)="onSubmit1()">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Upload Profile Photo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+                                        <div class="col-md-6 ">
+                                          <p>Choose File</p>
+                                          <div class="form-group">
+                                              
+                                             
+                                            <input type="file" name="image" (change)="fileProgress($event)" />
+                                            
+                                          </div>
+                                          <div *ngIf="fileUploadProgress">
+                                            Upload progress: {{ fileUploadProgress }}
+                                          </div>
+                                          <div class="image-preview mb-3" *ngIf="previewUrl">
+                                            <img [src]="previewUrl" height="150" />
+                                          </div>
+
+                                          <div class="mb-3" *ngIf="uploadedFilePath">
+                                            {{uploadedFilePath}}
+                                          </div>
+
+                                        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-share" data-dismiss="modal">Close</button>
+        <button type="button" class="btn-share" (ngSubmit)="onSubmit1()" >Save changes</button>
+      </div>
+      
+    </div>
+     </form>
+  </div>
+</div>

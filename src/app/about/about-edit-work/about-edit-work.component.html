@@ -1,0 +1,62 @@
+<!-- header area start -->
+<app-header></app-header>
+<!-- header area end -->
+<!-- about author details start -->
+<div class="about-author-details" style="margin-top: 80px;">
+  <a [routerLink]="['/abouteditwork']"></a>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="card widget-item">
+          <div class="about-me">
+            <ul class="nav flex-column about-author-menu">
+              <li><a href="#one" data-toggle="tab">ITI story</a></li>
+              <li><a href="#two" data-toggle="tab" class="active">Working Zone</a></li>
+              <li><a href="#three" data-toggle="tab">Educational Qualification</a></li>
+              <li><a href="#four" data-toggle="tab">Contact Details</a></li>
+              <!-- <li><a href="#five" data-toggle="tab">Friends </a></li> -->
+              <!-- <li><a href="#six" data-toggle="tab">Work & Education</a></li> -->
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-9">
+        <div class="about-description">
+          <div class="tab-content">
+            <!-- work -->
+            <form [formGroup]="workForm" (ngSubmit)="postWork()">
+              <div class="tab-pane fade" id="two">
+                <div class="work-zone">
+                  <div class="author-desc-title d-flex">
+                    <h4 class="author">
+                      <textarea name="companynametxtarea" rows="3" class="form-control" placeholder="companyName"
+                        formControlName="companyname"></textarea>
+                      <br>
+                      <textarea name="worktxtarea" rows="3" class="form-control" placeholder="Jobtitle"
+                        formControlName="title"> </textarea>
+                      <br>
+                      <textarea name="descriptiontxtarea" placeholder="description" rows="3" class="form-control"
+                        formControlName="description"></textarea>
+                      <br>
+
+                    </h4>
+
+                  </div>
+
+                </div>
+
+                <div class="modal-footer">
+
+                  <button (click)="postWork()" type="button" id="postwork" class="post-share-btn">Save Changes</button>
+                </div>
+              </div>
+
+            </form>
+            <!-- work end -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- about author details start -->

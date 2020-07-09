@@ -1,0 +1,101 @@
+          <!-- share box start -->
+          <div class="card card-small">
+            <div class="share-box-inner">
+              <!-- profile picture end -->
+              <div class="profile-thumb">
+                <a [routerLink]="['/profile']"  >
+                  <figure class="profile-thumb-middle">
+                    <img [src]="'https://localhost:44363'+pic" alt="profile picture">
+                  </figure>
+                </a>
+              </div>
+              <!-- profile picture end -->
+
+              <!-- share content box start -->
+              <div class="share-content-box w-100">
+                <form class="share-text-box" [formGroup]="postForm" (ngSubmit)="onSubmit2()">
+                  <input type="hidden" formControlName="userId" value="1">
+                  <textarea name="share" class="share-text-field" aria-disabled="true" placeholder="Say Something"
+                    data-toggle="modal" data-target="#textbox" id="email"  ></textarea>
+                  <button class="btn-share" type="button" >share</button>
+                </form>
+              </div>
+              <!-- share content box end -->
+
+              <!-- Modal start -->
+             <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+              <div class="modal fade" id="textbox" aria-labelledby="textbox">
+                
+                  <input type="hidden" formControlName="userId" value="1">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Share Your Mood</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body custom-scroll">
+                      <textarea name="share" class="share-field-big custom-scroll"
+                        placeholder="Say Something" formControlName="postBody"></textarea>
+
+                        <!-- upload photo -->
+                        <!-- <app-upload-photo (getUploadedFilePathClick)="getFilePathFn($event)"></app-upload-photo> -->
+                                <div class="col-md-6 ">
+                                  <p>Choose File</p>
+                                  <div class="form-group">
+                                    <!-- <form [formGroup]="postFormP" > -->
+                                    <input type="file" name="image" (change)="fileProgress($event)"
+                                       />
+                                    <!-- </form> -->
+                                  </div>
+                                  <div *ngIf="fileUploadProgress">
+                                    Upload progress: {{ fileUploadProgress }}
+                                  </div>
+                                  <div class="image-preview mb-3" *ngIf="previewUrl">
+                                    <img [src]="previewUrl" height="150" />
+                                  </div>
+
+                                  <div class="mb-3" *ngIf="uploadedFilePath">
+                                    {{uploadedFilePath}}
+                                  </div>
+
+                                </div>
+                                <!-- <div class="row" style="margin-bottom:15px;">
+                                  <div class="col-md-3">
+                                    <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)"
+                                      style="">
+                                    <button type="button" class="btn btn-success" (click)="file.click()">Upload
+                                      File</button>
+                                  </div>
+                                  <div class="col-md-4">
+                                    <span class="upload" *ngIf="progress > 0">
+                                      {{progress}}%
+                                    </span>
+                                    <span class="upload" *ngIf="message">
+                                      {{message}}
+                                    </span>
+                                  </div>
+                                </div> -->
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="post-share-btn" data-dismiss="modal">cancel</button>
+                      <button  (click)="onSubmit()" type="submit" id="post" class="post-share-btn" data-dismiss="modal">post</button>
+                    </div>
+                  </div>
+                </div>
+               
+              </div>
+               </form>
+              <!-- Modal end -->
+            </div>
+          </div>
+          <!-- share box end -->
+          <script>
+              $(document).ready(function () {
+              $("#post :button").click(function () {
+              $('textbox').modal('hide');
+              });
+              });
+
+          </script>

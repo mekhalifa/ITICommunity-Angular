@@ -96,7 +96,11 @@
               "src/styles.scss",
               "./node_modules/bootstrap/scss/bootstrap.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/bootstrap/js/dist/js/bootstrap.min.js",
+               "./node_modules/jquery/dist/jquery.min.js",
+               "./node_modules/alertifyjs/build/alertify.min.js"
+            ]
           }
         },
         "lint": {

@@ -1,12 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { RouterModule } from '@angular/router';
+import { ProfileWidgetComponent, UploadPhotoComponent, SearchComponent, HeaderComponent, PageNotFoundComponent } from '.';
+
+
+
 
 
 @NgModule({
-  declarations: [],
+  declarations: [HeaderComponent, PageNotFoundComponent, SearchComponent, ProfileWidgetComponent, UploadPhotoComponent],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    RouterModule
+  ],
+  exports: [HeaderComponent,PageNotFoundComponent,SearchComponent,ProfileWidgetComponent,UploadPhotoComponent]
 })
 export class SharedModule { }

@@ -1,0 +1,54 @@
+<!-- header area start -->
+<app-header></app-header>
+<br />
+<br />
+<br />
+<br />
+<br />
+<!-- header area end -->
+
+<!-- header top search start -->
+<div class="row justify-content-center " >
+  <div class="header-top-search col-3 center justify-content-center bg-light xx"  >
+    <form class="top-search-box">
+      <input ngModel name="search" #search="ngModel" placeholder="Search" class="top-search-field"
+        (input)="getUserByName(value)"/>
+      <button class="top-search-btn" (click)="getUserByName(search.value)"><i class="flaticon-search"></i></button>
+    </form>
+  </div>
+</div>
+<!-- header top search end -->
+<br>
+<br>
+<!-- widget single item start -->
+<div class="main-wrapper pt-70">
+  <div class="container row col-12 pt-70">
+    <div *ngFor="let user of users" class="col-lg-4 order-1 pt-70">
+      <br>
+      <br>
+      <div class="card card-profile widget-item p-0">
+        <div class="profile-banner">
+          <figure class="profile-banner-small">
+            <a [routerLink]="['/profilee']" [queryParams]="{id: user.id}" >
+              <img [src]="'https://localhost:44363'+user.bgPic" alt="" class="back" />
+            </a>
+            <a [routerLink]="['/profilee']" [queryParams]="{id: user.id}" class=" profile-thumb-2">
+              <img [src]="'https://localhost:44363'+user.profilePic" alt="" />
+            </a>
+          </figure>
+          <div class="profile-desc text-center">
+            <h6 class="author">
+              <a [routerLink]="['/profilee']" [queryParams]="{id: user.id}">{{ user.name }}</a>
+            </h6>
+            <p>
+              {{user.about}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- widget single item start -->
+<br>
+<br>

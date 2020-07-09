@@ -1,0 +1,45 @@
+                         <div class="timeline-header">
+                           <div class="container-fluid p-0">
+                             <div class="row no-gutters align-items-center justify-content-md-center">
+
+
+
+
+                               <div class="col-lg-6 justify-content-center ">
+                                 <div class="login-area">
+                                   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                                     <div class="row align-items-center">
+
+                                       <div class="col-12 col-sm">
+                                         <input type="text" placeholder="Email " class="single-field"
+                                           formControlName="emailaddress">
+                                       </div>
+                                       <div class="col-12 col-sm">
+                                         <input type="password" placeholder="Password" class="single-field"
+                                           formControlName="password">
+                                       </div>
+                                       <div class="col-12 col-sm-auto">
+                                         <button class="login-btn">Login</button>
+                                       </div>
+
+                                     </div>
+                                   </form>
+
+                                   <div *ngIf="isError == true">
+                                     <small class="text-light">
+                                       <!-- {{errorMsg}} -->
+                                     </small>
+                                      
+                                   </div>
+                                 </div>
+
+
+
+                               </div>
+                             </div>
+                           </div>
+                           <!-- <div class="alert alert-danger" role="alert">
+                             {{errLoginM}}
+                           </div> -->
+                         </div>
+                         <br>

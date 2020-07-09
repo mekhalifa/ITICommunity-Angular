@@ -1,0 +1,262 @@
+<!-- header area start -->
+<app-header></app-header>
+<!-- header area end -->
+<!-- about author details start -->
+<div class="about-author-details" style="margin-top: 80px;">
+    <!-- <a [routerLink]="['/about']"  ></a> -->
+    <div class="container" >
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="card widget-item">
+                    <div class="about-me">
+                        <ul class="nav flex-column about-author-menu">
+                            <li><a href="#one" data-toggle="tab" class="active" (click)='getStory()'>ITI story</a></li>
+                            <li><a href="#two" data-toggle="tab" (click)='getWork()'>Working Zone</a>
+                            
+                            
+                            </li>
+                            <li><a href="#three" data-toggle="tab" (click)='getEducation()'>Educational Qualification</a></li>
+                            <li><a href="#four" data-toggle="tab" (click)='getContacts()'>Contact Details</a></li> 
+                            <!-- <li><a href="#five" data-toggle="tab">Friends </a></li> -->
+                            <!-- <li><a href="#six" data-toggle="tab">Work & Education</a></li> -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="about-description">
+                    <div class="tab-content">
+                        <div class="tab-pane fade active show" id="one">
+                            <div *ngFor="let item of storyarea" class="work-zone" id="itistory">
+                                <!-- *ngFor="let item of storyarea" -->
+                                <div class="author-desc-title d-flex">
+                                    <h6 class="author"><a href="profile.html">ITI Story</a></h6>
+                                    <div class="post-settings-bar">
+                                        <span></span>
+                                        <span></span>
+                                        <!-- <span></span> -->
+                                        <div class="post-settings arrow-shape">
+                                            <ul>
+                                                <!-- <li><button>copy link to adda</button></li> -->
+                                                <ng-container *ngIf="item.itiStory==''; then exist ; else nostory">
+                                                </ng-container>
+        
+                                                <ng-template #nostory>
+                                                <li ><button [routerLink]="['/about/edit']">Add to your story</button></li>
+                                                <li><button (click)="deleteStory([(userid)]) ">Delete</button></li>   
+                                                </ng-template>
+        
+                                                <ng-template #exist>
+                                                <li ><button>Edit your story</button></li>
+                                                <li><button (click)="deleteStory([(userid)]) ">Delete</button></li>
+                                                   
+                                                </ng-template> 
+                                                <!--????????? userid insted of 11 ??????????-->
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- {{item.itiStory}} -->
+                                <ng-container *ngIf="item.itiStory; then nostorysc; else existsc">
+                                </ng-container>
+
+                                <ng-template #nostorysc>
+                                    <span >You didn't add a story yet</span>
+                                    <input type="textarea" id="txt_story" >
+
+                                </ng-template>
+
+                                <ng-template #existsc>
+                                    <span id="txt_story_already">{{storyarea}}</span>
+                                    <!-- <input type="textarea" id="txt_story" > -->
+
+                                </ng-template> 
+
+                            </div>
+                        </div>
+                        <!-- work -->
+                        <div  class="tab-pane fade" id="two">
+                            <div *ngFor="let item of workarea" class="work-zone">
+                                <div class="author-desc-title d-flex">
+                                    <h4 class="author"><a href="#">{{item?.companyName}} </a></h4>
+                                    <div class="post-settings-bar">
+                                        <span></span>
+                                        <span></span>
+                                        <!-- <span></span> -->
+                                       
+                                        <div class="post-settings arrow-shape">
+                                            
+                                            <ul>
+                                               
+ <!-- <li><button (click)="deleteStory(11) ">Delete</button></li> -->
+                                                <!-- <li><button>copy link to adda</button></li> -->
+                                                <ng-container *ngIf="!item.companyName then exist ; else nostory">
+                                                    
+                                                </ng-container>
+        
+                                                <ng-template #nostory>
+                                                <!-- <li ><button>Add</button></li> -->
+                                                
+                                                <li ><button [routerLink]="['/about/edit/work']">Add</button></li>
+                                                <!-- <li><button (click)="deleteWork([(userid)]) ">Delete</button></li> -->
+                                                    
+                                                </ng-template>
+        
+                                                <ng-template #exist>
+                                                    <!-- <li > <button [routerLink]="['/about/edit']">Add</button></li> -->
+                                                <li ><button>Edit </button></li>
+                                                <!-- <li><button (click)="deleteStory(11) ">Delete</button></li> -->
+                                                   
+                                                </ng-template> 
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <!-- <p> -->
+
+                                <div class="row">
+                                    <div class="col-md-8" style="color:darkslategrey">
+                                        <h6>{{item.title}} </h6>
+
+                                    </div>
+                                    <!-- <div class="col-md-4">
+                                       <ng-container *ngIf="!item.endDate; then noend; else end">
+                                        </ng-container>
+
+                                        <ng-template #noend>
+                                            <h6 style="color:#dc4734">{{item.startDate | date:'yyyy-MM-dd'}} :
+                                                {{'Present'}}</h6>
+                                        </ng-template>
+
+                                        <ng-template #end>
+                                            <h6 style="color:#dc4734">{{item.startDate | date:'yyyy-MM-dd'}} :
+                                                {{item.endDate | date:'yyyy-MM-dd'}}</h6>
+                                        </ng-template> 
+   
+                                    </div> -->
+
+                                </div>
+                                <!-- <div class="row">{{item?.companyName}}</div> -->
+                                <div class="row">
+                                    <p style="margin-left: 17px;">{{item.description}}</p>
+                                </div>
+                                <br>
+                                <!-- <h2>{{item.}}</h2> -->
+                                <!-- </p> -->
+
+                            </div>
+                        </div>
+                        <!-- education -->
+                        <div class="tab-pane fade" id="three">
+                            <div *ngFor="let item of educationarea" class="work-zone">
+                                <div class="author-desc-title d-flex">
+                                    <h6 class="author"><a href="profile.html">{{item.schoolName}}</a></h6>
+                                    <div class="post-settings-bar">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <div class="post-settings arrow-shape">
+                                            <ul>
+                                                <ng-container *ngIf="!item.schoolName; then exist ; else nostory">
+                                                </ng-container>
+        
+                                                <ng-template #nostory>
+                                                <li ><button [routerLink]="['/about/edit']">Add</button></li>
+                                                    
+                                                </ng-template>
+        
+                                                <ng-template #exist>
+                                                <li ><button>Edit </button></li>
+                                                <!-- <li><button (click)="deleteStory(11) ">Delete</button></li> -->
+                                                   
+                                                </ng-template> 
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8" style="color:darkslategrey">
+                                        <h6>{{item.title}} </h6>
+
+                                    </div>
+                                    <!-- <div class="col-md-4">
+                                       <ng-container *ngIf="!item.endDate; then noend; else end">
+                                        </ng-container>
+
+                                        <ng-template #noend>
+                                            <h6 style="color:#dc4734">{{item.startDate | date:'yyyy-MM'}} :
+                                                {{'Present'}}</h6>
+                                        </ng-template>
+
+                                        <ng-template #end>
+                                            <h6 style="color:#dc4734">{{item.startDate | date:'yyyy-MM'}} :
+                                                {{item.endDate | date:'yyyy-MM'}}</h6>
+                                        </ng-template> 
+   
+                                    </div> -->
+
+                                </div>
+                                <div class="row">
+                                    <p *ngIf="item.grade" style="margin-left: 17px;">Grade: {{item.grade}}</p>
+                                </div>
+                                <div class="row">
+                                    <!-- <div class="col-md-4"> -->
+                                      
+                                    <p *ngIf="item.degree" style="margin-left: 17px;">Degree: {{item.degree}}</p>
+                                </div>
+                                 <div class="row">
+                                    <p *ngIf="item.fieldOfStudy" style="margin-left: 17px;">Field of study: {{item.fieldOfStudy}}</p>
+                                </div>
+                                
+                                <div class="row">
+                                    <p *ngIf="item.discription" style="margin-left: 17px;">Discription: {{item.discription}}</p>
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                        <!-- contacts -->
+                        <div class="tab-pane fade" id="four">
+                            <div *ngFor="let item of contactarea"  class="work-zone">
+                                <div class="author-desc-title d-flex">
+                                    <h6 class="author"><a href="profile.html">{{item.type}}</a></h6>
+                                    <div class="post-settings-bar">
+                                        <span></span>
+                                        <span></span>
+                                        <!-- <span></span> -->
+                                        <div class="post-settings arrow-shape">
+                                            <ul>
+                                                <ng-container *ngIf="!item.type; then exist ; else nostory">
+                                                </ng-container>
+        
+                                                <ng-template #nostory>
+                                                <li ><button [routerLink]="['/about/edit']">Add</button></li>
+                                                    
+                                                </ng-template>
+        
+                                                <ng-template #exist>
+                                                <li ><button>Edit </button></li>
+                                                <li ><button (click)="hidecontact()">Hide</button></li>
+
+                                                <!-- <li><button (click)="deleteStory(11) ">Delete</button></li> -->
+                                                   
+                                                </ng-template> 
+                                            </ul>
+                                        </div>
+                                    </div>
+     
+                                </div>
+                                <div class="row">
+                                    <p *ngIf="item.contactDetails" style="margin-left: 17px;"> {{item.contactDetails}}</p> 
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- about author details start -->
